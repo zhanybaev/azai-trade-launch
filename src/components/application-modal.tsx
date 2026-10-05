@@ -33,7 +33,7 @@ export function ApplicationModal({ open, onOpenChange }: Props) {
     if (pending) return;
     const form = event.currentTarget;
     const values = Object.fromEntries(new FormData(form));
-    const result = applicationSchema.safeParse({ ...values, contact_consent: values.contact_consent === 'on' });
+    const result = applicationSchema.safeParse({ ...values, contact_consent: values['contact_consent'] === 'on' });
     if (!result.success) {
       const nextErrors: Record<string, string> = {};
       result.error.issues.forEach(issue => { nextErrors[String(issue.path[0])] = issue.message; });
@@ -78,7 +78,7 @@ export function ApplicationModal({ open, onOpenChange }: Props) {
             <section><h3 className="form-section-title">01 <span>Personal Information</span></h3><div className="grid gap-4 sm:grid-cols-3">{personal.map(renderField)}</div></section>
             <section><h3 className="form-section-title">02 <span>Company Information</span></h3><div className="grid gap-4 sm:grid-cols-3">{company.map(renderField)}</div></section>
             <section><h3 className="form-section-title">03 <span>Truck Information</span></h3><div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2"><label htmlFor="truck_type" className="form-label">Truck Type <span className="text-primary">*</span></label><select id="truck_type" name="truck_type" required defaultValue="" className="form-select" aria-invalid={Boolean(errors.truck_type)}><option value="" disabled>Select truck type</option>{['Dry van','Reefer','Flatbed','Step deck','Power only','Box truck','Other'].map(value => <option key={value}>{value}</option>)}</select>{errors.truck_type && <p className="text-xs text-destructive">{errors.truck_type}</p>}</div>
+              <div className="space-y-2"><label htmlFor="truck_type" className="form-label">Truck Type <span className="text-primary">*</span></label><select id="truck_type" name="truck_type" required defaultValue="" className="form-select" aria-invalid={Boolean(errors['truck_type'])}><option value="" disabled>Select truck type</option>{['Dry van','Reefer','Flatbed','Step deck','Power only','Box truck','Other'].map(value => <option key={value}>{value}</option>)}</select>{errors['truck_type'] && <p className="text-xs text-destructive">{errors['truck_type']}</p>}</div>
               {renderField({ name: 'number_of_trucks', label: 'Number of Trucks', type: 'number', required: true, min: 1, max: 10000 })}
               {renderField({ name: 'truck_year', label: 'Year of Truck', type: 'number', min: 1950, max: 2030 })}
               {renderField({ name: 'current_location', label: 'Current Location', placeholder: 'City, State', required: true })}
@@ -90,7 +90,7 @@ export function ApplicationModal({ open, onOpenChange }: Props) {
             </div></section>
             <section><h3 className="form-section-title">05 <span>Additional Information</span></h3><label htmlFor="comments" className="form-label">Additional Comments / Questions</label><Textarea name="comments" id="comments" maxLength={2000} className="mt-2 min-h-24 shadow-none" /></section>
             <div className="hidden" aria-hidden="true"><label htmlFor="website">Website</label><input name="website" id="website" tabIndex={-1} autoComplete="off" /></div>
-            <div><label className="flex cursor-pointer items-start gap-3 text-sm leading-6"><input name="contact_consent" type="checkbox" required className="mt-1 size-4 shrink-0 accent-primary" /><span>I agree to be contacted by AZAI Trade regarding trucking and dispatching services.</span></label>{errors.contact_consent && <p className="mt-2 text-sm text-destructive">{errors.contact_consent}</p>}</div>
+            <div><label className="flex cursor-pointer items-start gap-3 text-sm leading-6"><input name="contact_consent" type="checkbox" required className="mt-1 size-4 shrink-0 accent-primary" /><span>I agree to be contacted by AZAI Trade regarding trucking and dispatching services.</span></label>{errors['contact_consent'] && <p className="mt-2 text-sm text-destructive">{errors['contact_consent']}</p>}</div>
             {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
             <Button type="submit" className="h-12 w-full" disabled={pending}>{pending ? <><LoaderCircle className="animate-spin" /> Sending Application…</> : <>SUBMIT APPLICATION <ArrowRight /></>}</Button>
             <p className="flex items-center justify-center gap-2 text-xs text-muted-foreground"><ShieldCheck className="size-4" /> Your information is kept private.</p>
