@@ -14,7 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      driver_applications: {
+        Row: {
+          comments: string
+          company_name: string
+          contact_consent: boolean
+          created_at: string
+          current_location: string
+          dot_number: string
+          email: string
+          freight_type: string
+          full_name: string
+          id: string
+          mc_number: string
+          number_of_trucks: number
+          phone: string
+          preferred_lanes: string
+          truck_type: string
+          truck_year: number | null
+          years_experience: number | null
+        }
+        Insert: {
+          comments?: string
+          company_name?: string
+          contact_consent: boolean
+          created_at?: string
+          current_location: string
+          dot_number?: string
+          email: string
+          freight_type?: string
+          full_name: string
+          id?: string
+          mc_number?: string
+          number_of_trucks: number
+          phone: string
+          preferred_lanes?: string
+          truck_type: string
+          truck_year?: number | null
+          years_experience?: number | null
+        }
+        Update: {
+          comments?: string
+          company_name?: string
+          contact_consent?: boolean
+          created_at?: string
+          current_location?: string
+          dot_number?: string
+          email?: string
+          freight_type?: string
+          full_name?: string
+          id?: string
+          mc_number?: string
+          number_of_trucks?: number
+          phone?: string
+          preferred_lanes?: string
+          truck_type?: string
+          truck_year?: number | null
+          years_experience?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
