@@ -66,7 +66,7 @@ export function ApplicationModal({ open, onOpenChange }: Props) {
         <div className="mx-auto mb-6 flex size-16 items-center justify-center rounded-full bg-primary/10 text-primary"><Check className="size-8" /></div>
         <DialogTitle className="font-display text-3xl">Application Received!</DialogTitle>
         <DialogDescription className="mx-auto mt-5 max-w-md text-base leading-7">Thank you for contacting AZAI Trade. Our team will review your information and contact you shortly.</DialogDescription>
-        <Button onClick={() => onOpenChange(false)} className="mt-8 h-11 px-8">Back to AZAI Trade <ArrowRight /></Button>
+        <Button onClick={() => { setReceived(false); onOpenChange(false); }} className="mt-8 h-11 px-8">Back to AZAI Trade <ArrowRight /></Button>
       </div> : <>
         <DialogHeader className="border-b bg-secondary px-6 pb-6 pt-8 sm:px-8">
           <span className="eyebrow mb-2 text-primary">LET’S GET MOVING</span>

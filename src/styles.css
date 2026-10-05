@@ -48,6 +48,7 @@
   --ink-border: oklch(1 0 0 / 16%);
   --overlay: oklch(0.15 0.018 255 / 75%);
   --hero-gradient: linear-gradient(90deg, oklch(0.16 0.015 255 / 94%) 0%, oklch(0.16 0.015 255 / 78%) 29%, oklch(0.16 0.015 255 / 24%) 58%, oklch(0.16 0.015 255 / 4%) 100%);
+  --hero-mobile: linear-gradient(0deg, oklch(0.16 0.015 255 / 18%), oklch(0.16 0.015 255 / 70%) 40%, oklch(0.16 0.015 255 / 93%) 80%);
   --hero-bottom: linear-gradient(0deg, oklch(0.16 0.015 255 / 55%), transparent 35%);
 }
 @layer base {
@@ -166,10 +167,10 @@
   .mobile-menu-button { display:inline-flex; width:32px; }
   .mobile-nav { display:flex; flex-direction:column; padding:18px 20px 24px; gap:0; border-top:1px solid var(--border); background:var(--background); position:absolute; width:100%; }
   .mobile-nav > a { padding:14px 0; font-size:14px; display:flex; gap:10px; align-items:center; } .mobile-nav > button { margin-top:12px; }
-  .hero-section { height:auto; min-height:750px; }
+  .hero-section { height:auto; min-height:710px; }
   .hero-image { height:100%; object-position:68% center; }
-  .hero-shade { background:linear-gradient(0deg, oklch(0.16 0.015 255 / 18%), oklch(0.16 0.015 255 / 70%) 40%, oklch(0.16 0.015 255 / 93%) 80%); }
-  .hero-content { padding-top:43px; padding-bottom:245px; }
+  .hero-shade { background:var(--hero-mobile); }
+  .hero-content { padding-top:43px; padding-bottom:205px; }
   .hero-eyebrow { font-size:9px; margin-bottom:21px; }
   .hero-content h1 { font-size:44px; } .hero-content h1 > span { font-size:16px; }
   .hero-headline { font-size:31px; margin-top:25px; line-height:1.2; }
